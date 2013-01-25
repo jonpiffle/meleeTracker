@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@session) do |f| %>
+	<% if @session.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>
+
+			<ul>
+			<% @session.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+
+	<div id="player_sessions">
+		<b>Players In Session:</b>
+		<%if @players.empty?%>
+			None
+		<%else%>
+			<br><%@players.each do |player|%>
+				 <%=player.gamertag%><br>
+			<%end%>
+	<%end%>
+		<div class="links">
+			<br><%= link_to_add_association "Add Player To Session", f, :player_sessions%>
+		</div><br><br>
+	</div>
+
+	<div id="games">
+		<b>Games In Session:</b>
+		<%if @games.empty?%>
+			None
+		<%else%>
+			<br><%@games.each_with_index do |game,i|%>
+				<%=i+1%>. <%=game.title%><br>
+			<%end%>
+		<%end%>
+	<div class="links"><br>
+		<%=link_to "New 1v1", new_session_game_path(:session_id => @session.id, :game_type => "Single")%> | <%=link_to "New 2v2", new_session_game_path(:session_id => @session.id, :game_type => "Double")%>
+		</div><br><br>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

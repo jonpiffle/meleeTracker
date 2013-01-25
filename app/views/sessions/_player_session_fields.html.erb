@@ -1,0 +1,4 @@
+<div class='nested-fields'>
+	<%=f.collection_select(:player_id, Player.all - @session.players, :id, :gamertag)%>
+	<%= link_to_remove_association "Remove", f%>
+</div>	

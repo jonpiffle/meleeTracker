@@ -1,0 +1,23 @@
+<h1>Listing player_sessions</h1>
+
+<table>
+  <tr>
+    <th>Player</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @player_sessions.each do |player_session| %>
+  <tr>
+    <td><%= player_session.player_id %></td>
+    <td><%= link_to 'Show', player_session %></td>
+    <td><%= link_to 'Edit', edit_player_session_path(player_session) %></td>
+    <td><%= link_to 'Destroy', player_session, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Player session', new_player_session_path %>

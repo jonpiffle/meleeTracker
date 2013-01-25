@@ -1,0 +1,6 @@
+<div class='player'>
+	<b>Player <%=f.object.player_number %></b><br>
+	<%= f.collection_select(:player_id, @session.players, :id, :gamertag)%><br>
+	<%= f.select(:character, PlayerGame::CHARACTERS)%>
+	<%= f.check_box :winner%>
+</div>

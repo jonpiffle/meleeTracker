@@ -1,0 +1,39 @@
+<script>
+  $(document).ready( function () {
+    //$(".player").draggable();
+      $( "#sortable" ).sortable();
+      $( "#sortable" ).disableSelection();
+  });
+</script>
+
+<%= form_for(@game) do |f| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% @game.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :session_id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :game_type %>
+  </div>
+
+  <div id="sortable">
+  <%=f.fields_for :player_games do |builder| %>
+    <%=render 'player_game_fields', :f =>builder %>
+  <%end%>
+</div>
+<div style="clear:both;" />
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

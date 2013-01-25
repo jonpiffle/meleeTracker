@@ -1,0 +1,11 @@
+MeleeTracker User Experience
+
+Create new session:
+	Dynamically add players at top of screen
+	Add new games
+
+Adding a new game:
+	Select 2-4 players and their characters
+	Select winner
+	save
+

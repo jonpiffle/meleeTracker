@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Player:</b>
+  <%= @player_session.player_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_player_session_path(@player_session) %> |
+<%= link_to 'Back', player_sessions_path %>
